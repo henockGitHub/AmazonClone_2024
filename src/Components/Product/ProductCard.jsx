@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Rating from "@mui/material/Rating";
-import CurrencyFormat from "../CurrencyFormat/CurrencyFortmat";
+import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import classes from "./Product.module.css";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
@@ -36,17 +36,18 @@ function ProductCard({ product, flex, renderDesc, renderAdd }) {
         {renderDesc && <div style={{ maxWidth: "750px" }}>{description}</div>}
         <div className={classes.rating}>
           <Rating value={ratingValue} precision={0.1} readOnly />
+          <small>{ratingCount} reviews</small>
         </div>
-        <small>{ratingCount} reviews</small>
+
+        <div>
+          <CurrencyFormat amount={price} />
+        </div>
+        {renderAdd && (
+          <button className={classes.button} onClick={addToCart}>
+            Add to cart
+          </button>
+        )}
       </div>
-      <div>
-        <CurrencyFormat amount={price} />
-      </div>
-      {renderAdd && (
-        <button className={classes.button} onClick={addToCart}>
-          Add to cart
-        </button>
-      )}
     </div>
   );
 }

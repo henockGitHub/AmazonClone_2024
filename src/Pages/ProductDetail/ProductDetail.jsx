@@ -25,7 +25,7 @@ function ProductDetail() {
         setIsLoading(false);
       });
   }, []);
-  console.log(productId);
+  // console.log(productId);
 
   return (
     <LayOut>
